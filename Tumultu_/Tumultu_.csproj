@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Detection\DetectionInfo.cs" />
+    <Compile Include="Detection\DetectionSignatures.cs" />
     <Compile Include="Entropy\EntropyCounter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
