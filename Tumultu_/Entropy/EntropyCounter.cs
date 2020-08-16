@@ -33,8 +33,9 @@ namespace Tumultu_.Entropy
         private double GetSampleEntropy(byte[] bytes)
         {
             Dictionary<byte, int> histogram = new Dictionary<byte, int>();
-            for(byte b = 0; b <= 0xFF; b++)
+            for(byte b = 0; b < 0xFF; b++)
                 histogram.Add(b, 0);
+            histogram.Add(0xFF, 0);
             
             foreach(byte b in bytes)
                 histogram[b]++;

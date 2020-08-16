@@ -12,21 +12,19 @@ namespace Tumultu_.Detection
     public class DetectionInfo
     {
         private FileStream fs;
-        public DetectionInfo(FileStream fs)
-        {
-            this.fs = fs;
-        }
+        string path;
+
         public DetectionInfo(string path)
         {
-            fs = new FileStream(path, FileMode.Open);
+            this.path = path;
         }
-
-        public string Detect(byte[] file)
+        public string Detect()
         {
+            byte[] file = File.ReadAllBytes(path);
             StringBuilder sb = new StringBuilder();
             foreach(var x in DetectionSignatures.Detectors)
                 if (file.Take(x.Key.Length).SequenceEqual(x.Key))
-                    sb.Append($"possible: {x.Key}\n");
+                    sb.Append($"possible file type: {x.Value}\n");
             return sb.ToString();
         }
 
