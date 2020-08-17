@@ -11,7 +11,6 @@ namespace Tumultu_.Detection
 {
     public class DetectionInfo
     {
-        private FileStream fs;
         string path;
 
         public DetectionInfo(string path)
@@ -30,19 +29,43 @@ namespace Tumultu_.Detection
 
         public string getMD5()
         {
-            return Encoding.UTF8.GetString(MD5.Create().ComputeHash(File.ReadAllBytes(fs.Name))).ToUpper();
+            using(var md5 = MD5.Create())
+            {
+                using(var stream = File.OpenRead(path))
+                {
+                    return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToUpperInvariant();
+                }
+            }
         }
         public string getSHA1()
         {
-            return Encoding.UTF8.GetString(SHA1.Create().ComputeHash(File.ReadAllBytes(fs.Name))).ToUpper();
+            using (var sha1 = SHA1.Create())
+            {
+                using (var stream = File.OpenRead(path))
+                {
+                    return BitConverter.ToString(sha1.ComputeHash(stream)).Replace("-", "").ToUpperInvariant();
+                }
+            }
         }
         public string getSHA256()
         {
-            return Encoding.UTF8.GetString(SHA256.Create().ComputeHash(File.ReadAllBytes(fs.Name))).ToUpper();
+            using (var sha256 = SHA256.Create())
+            {
+                using (var stream = File.OpenRead(path))
+                {
+                    return BitConverter.ToString(sha256.ComputeHash(stream)).Replace("-", "").ToUpperInvariant();
+                }
+            }
         }
         public string getSHA512()
         {
-            return Encoding.UTF8.GetString(SHA512.Create().ComputeHash(File.ReadAllBytes(fs.Name))).ToUpper();
+            using (var sha512 = SHA512.Create())
+            {
+                using (var stream = File.OpenRead(path))
+                {
+                    return BitConverter.ToString(sha512.ComputeHash(stream)).Replace("-", "").ToUpperInvariant();
+                }
+            }
         }
 
 

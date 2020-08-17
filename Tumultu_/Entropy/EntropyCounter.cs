@@ -63,6 +63,7 @@ namespace Tumultu_.Entropy
                 entropyFragments.Add(GetSampleEntropy(byteArray));
             }
 
+            fs.Close();
             return entropyFragments;
         }
     }
