@@ -30,6 +30,11 @@ namespace Tumultu_.Entropy
             sampleSize = fileSize / samples;
         }
 
+        /// <summary>
+        /// Counts entropy of a single part of a file
+        /// </summary>
+        /// <param name="bytes">Part of a file</param>
+        /// <returns>Entropy of the part ranged from 0 to 1.</returns>
         private double GetSampleEntropy(byte[] bytes)
         {
             Dictionary<byte, int> histogram = new Dictionary<byte, int>();
@@ -49,6 +54,10 @@ namespace Tumultu_.Entropy
             return entropy * entropy;
         }
 
+        /// <summary>
+        /// Entropy of a whole file divided into given number of samples.
+        /// </summary>
+        /// <returns>Collection of entropies of each sample.</returns>
         public List<double> GetFileEntropy()
         {
             List<double> entropyFragments = new List<double>();

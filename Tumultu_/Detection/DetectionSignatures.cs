@@ -15,7 +15,7 @@ namespace Tumultu_.Detection
 
 
         /// <summary>
-        /// Adding signatures (ik, hardcoded), in love with english wiki
+        /// Adding some signatures (ik, hardcoded)
         /// </summary>
         static DetectionSignatures()
         {
