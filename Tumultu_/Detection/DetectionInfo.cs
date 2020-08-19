@@ -23,7 +23,7 @@ namespace Tumultu_.Detection
             StringBuilder sb = new StringBuilder();
             foreach(var x in DetectionSignatures.Detectors)
                 if (file.Take(x.Key.Length).SequenceEqual(x.Key))
-                    sb.Append($"possible file type: {x.Value}\n");
+                    sb.AppendLine($"{x.Value}\n");
             return sb.ToString();
         }
 
