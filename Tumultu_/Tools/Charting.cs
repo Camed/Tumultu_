@@ -26,6 +26,10 @@ namespace Tumultu_.Tools
             Length = entropy.Count();
         }
 
+        /// <summary>
+        /// Creating chart/bitmap, each column represents entropy of each sample
+        /// </summary>
+        /// <returns>Bitmap with prepared chart</returns>
         public unsafe Bitmap GetBitmap()
         {
             Bitmap bm = new Bitmap(Length, 300, PixelFormat.Format24bppRgb);

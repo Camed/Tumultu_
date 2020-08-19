@@ -8,6 +8,7 @@ using System.Xml.Schema;
 using Newtonsoft.Json;
 using System.Net;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Tumultu_.Tools
 {
@@ -35,17 +36,25 @@ namespace Tumultu_.Tools
         /// <returns>JSON stored in string</returns>
         public string GetFileReport(string hash)
         {
-            _request = WebRequest.Create($"https://www.virustotal.com/vtapi/v2/file/report?apikey={ApiKey}&resource={hash}");
-            _response = (HttpWebResponse)_request.GetResponse();
+            try
+            {
+                _request = WebRequest.Create($"https://www.virustotal.com/vtapi/v2/file/report?apikey={ApiKey}&resource={hash}");
+                _response = (HttpWebResponse)_request.GetResponse();
 
-            Stream ds = _response.GetResponseStream();
-            StreamReader sr = new StreamReader(ds);
-            string response = sr.ReadToEnd();
+                Stream ds = _response.GetResponseStream();
+                StreamReader sr = new StreamReader(ds);
+                string response = sr.ReadToEnd();
 
-            ds.Close();
-            sr.Close();
-            _response.Close();
-            return response;
+                ds.Close();
+                sr.Close();
+                _response.Close();
+                return response;
+            }
+            catch
+            {
+                MessageBox.Show("Probably incorrect API key!");
+                return null;
+            }
         }
 
         /// <summary>
@@ -55,14 +64,23 @@ namespace Tumultu_.Tools
         /// <returns>JSON stored in string</returns>
         public string GetFileComments(string hash)
         {
-            _request = WebRequest.Create($"https://www.virustotal.com/vtapi/v2/comments/get?apikey={ApiKey}&resource={hash}");
-            _response = (HttpWebResponse)_request.GetResponse();
+            try
+            {
+                _request = WebRequest.Create($"https://www.virustotal.com/vtapi/v2/comments/get?apikey={ApiKey}&resource={hash}");
+                _response = (HttpWebResponse)_request.GetResponse();
 
-            var sr = new StreamReader(_response.GetResponseStream());
-            string response = sr.ReadToEnd();
-            sr.Close();
-            _response.Close();
-            return response;
+                var sr = new StreamReader(_response.GetResponseStream());
+                string response = sr.ReadToEnd();
+                sr.Close();
+                _response.Close();
+                return response;
+            }
+            catch
+            {
+                MessageBox.Show("Probably incorrect API key!");
+                return null;
+            }
+
         }
     }
 }

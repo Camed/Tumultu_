@@ -17,6 +17,7 @@ namespace Tumultu_.Tools
             public 
         }*/
 
+
         public string ParseComments(JObject json)
         {
             StringBuilder sb = new StringBuilder();
@@ -25,6 +26,11 @@ namespace Tumultu_.Tools
             return "";
         }
 
+        /// <summary>
+        /// Parsing JSON given by VT API
+        /// </summary>
+        /// <param name="json">JSON object from VT API</param>
+        /// <returns>Formatted string that should be given to a user</returns>
         public string ParseResults(JObject json)
         {
             StringBuilder sb = new StringBuilder();

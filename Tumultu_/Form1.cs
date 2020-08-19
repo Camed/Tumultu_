@@ -20,6 +20,9 @@ namespace Tumultu_
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// some constants and fileds 
+        /// </summary>
         private const long MINIMUM_FILE_SIZE = 256;
         private const long MAXIMUM_FILE_SIZE = 134217728;
         private string lastFilePath = "";
@@ -29,6 +32,9 @@ namespace Tumultu_
             InitializeComponent();
         }
 
+        /// <summary>
+        /// generally manage input and do all the stuff
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             lastFilePath = "";
@@ -89,6 +95,9 @@ namespace Tumultu_
             }
         }
 
+        /// <summary>
+        /// Saving gathered data to files
+        /// </summary>
         private void saveButton_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
