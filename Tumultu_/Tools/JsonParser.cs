@@ -21,9 +21,15 @@ namespace Tumultu_.Tools
         public string ParseComments(JObject json)
         {
             StringBuilder sb = new StringBuilder();
-
-
-            return "";
+            JToken comments = json["comments"];
+            int iter = 1;
+            foreach(var x in comments)
+            {
+                sb.AppendLine($"\n\nComment #{iter}:\n");
+                iter++;
+                sb.Append(x["comment"].ToString());
+            }
+            return sb.ToString();
         }
 
         /// <summary>

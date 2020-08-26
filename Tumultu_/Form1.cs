@@ -27,6 +27,7 @@ namespace Tumultu_
         private const long MAXIMUM_FILE_SIZE = 134217728;
         private string lastFilePath = "";
         private string vtResult = "none";
+        private string vtComments = "none";
         public Form1()
         {
             InitializeComponent();
@@ -144,10 +145,11 @@ namespace Tumultu_
             VirusTotal vt = new VirusTotal(key);
             JsonParser jp = new JsonParser();
             string report = vt.GetFileReport(dt.getMD5());
+            string comments = vt.GetFileComments(dt.getMD5());
             vtResult = jp.ParseResults(JObject.Parse(report));
-
+            vtComments = jp.ParseComments(JObject.Parse(comments));
             var name = Path.GetTempFileName();
-            File.WriteAllText(name + ".txt", vtResult);
+            File.WriteAllText(name + ".txt", vtResult + "\n\n" + vtComments);
             System.Diagnostics.Process.Start(name + ".txt");
         }
 
