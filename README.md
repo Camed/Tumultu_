@@ -12,4 +12,4 @@ You can save all data you gathered, and it is splitted between 3 files. 2 logs a
 ![how saved data look like](/Screenshots/saves.png)
 
 Any feedback is welcome!
-![tumultu_logo](/Screenshots/tumultu_icon.png)
+
